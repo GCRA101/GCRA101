@@ -1,7 +1,12 @@
 name: GitHub Metrics
+
 on:
-  schedule: [{cron: "0 */12 * * *"}]
+  schedule:
+    - cron: "0 */12 * * *"
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   github-metrics:
@@ -13,7 +18,4 @@ jobs:
           base: ""
           filename: github-metrics.svg
 
-          plugin_activity: yes
-          plugin_activity_days: 30
-          plugin_activity_filter: all
-          plugin_activity_visibility: public
+          plugin_activity: no
