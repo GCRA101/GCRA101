@@ -1,0 +1,21 @@
+name: GitHub Metrics
+on:
+  schedule: [{cron: "0 */12 * * *"}]  # updates twice a day
+  workflow_dispatch:
+
+jobs:
+  github-metrics:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: lowlighter/metrics@latest
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+          base: ""
+          filename: github-metrics.svg
+
+          # Activity graph (radar chart)
+          plugin_activity: yes
+          plugin_activity_days: 30
+          plugin_activity_filter: all
+          plugin_activity_visibility: public
+          plugin_activity_skills: yes
